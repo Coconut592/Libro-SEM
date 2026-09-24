@@ -6,7 +6,7 @@ carpeta independiente con sus scripts, su carpeta `data/` y su propio `README.md
 | Proyecto | Carpeta | Estado |
 |---|---|---|
 | Datos Violencia Veracruz | `Datos_Violencia_Veracruz/` | 🔄 Análisis exploratorio listo |
-| Tren de Guadalajara | `Tren_de_Guadalajara/` | ✅ AFE, AFC, 2do orden, confiabilidad y validez, puntajes, FIML |
+| Tren de Guadalajara | `Tren_de_Guadalajara/` | ✅ AFE, AFC, 2do orden, confiabilidad y validez, puntajes, invarianza, FIML |
 
 ## Cómo trabajar en VSCode
 

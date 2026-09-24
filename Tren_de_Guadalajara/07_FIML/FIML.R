@@ -8,13 +8,13 @@
 # Nota: en AFE_CFA.R el modelo con missing = "fiml" se ajusta sobre
 # tren_reducido, que ya solo tiene registros completos, así que FIML no
 # cambia nada. Aquí se usa la base completa (306 usuarios), como en Mplus.
-#   source("Tren_de_Guadalajara/06_FIML/FIML.R")
+#   source("Tren_de_Guadalajara/07_FIML/FIML.R")
 # =============================================================================
 
 library(readstata13)
 library(lavaan)
 
-dir_salida <- "Tren_de_Guadalajara/06_FIML/output"
+dir_salida <- "Tren_de_Guadalajara/07_FIML/output"
 
 # -----------------------------------------------------------------------
 # Paso 1. ¿Cuántos datos faltan y dónde?

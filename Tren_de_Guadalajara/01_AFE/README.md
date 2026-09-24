@@ -40,5 +40,10 @@ Script: `AFE.R`. Referencias: primer ejemplo de `AFE_CFA.R` y láminas 4–7 del
 
    Coincide con el `USEV ARE p4-p64 p71 p73-p75` de los `.inp` y con `tren[,-c(1,9,13)]` en `AFE_CFA.R`.
 
-> El PDF hace el AFE en Mplus con los 306 casos (FIML) y obtiene la misma estructura; ahí `p72` (.37) y
-> `p8` (≈.29 en los tres factores) también son los ítems débiles.
+## Comparación con Mplus (`EFA_Tren_MPLUS_out.pdf`)
+
+La salida de Mplus hace el AFE con los **306** usuarios (FIML, MLR, rotación promax) para 1 a 5 factores.
+Con 3 factores, RMSEA = .069 y SRMR = .039, y aparecen los mismos factores: Acceso (p4–p62), Tarjeta
+(p63–p64) y Confort (p71–p75). `p72` (.37) y `p8` (≈.25 en dos factores) vuelven a ser los ítems débiles.
+Las soluciones de 4 y 5 factores ajustan mejor, pero sus factores extra se forman con uno o dos ítems
+(`p74`/`p75`, `p8`) y tienen determinación baja (.72–.82). Por eso se mantienen 3 factores.

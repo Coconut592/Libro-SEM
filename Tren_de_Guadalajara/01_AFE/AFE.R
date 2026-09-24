@@ -25,7 +25,7 @@ colSums(is.na(tren))   # p63 y p64 (tarjeta) concentran los faltantes
 
 # Igual que en la referencia, se usan únicamente registros completos
 # (complete.cases): quedan 170 usuarios. El uso de todos los casos con
-# FIML se trabaja en la carpeta 06_FIML.
+# FIML se trabaja en la carpeta 07_FIML.
 tren <- tren[complete.cases(tren), ]
 nrow(tren)             # 170
 

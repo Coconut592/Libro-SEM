@@ -8,7 +8,7 @@
 #
 # Como en Mplus, el modelo se estima con los 306 usuarios usando MLR y
 # FIML (missing = "fiml"); así cada usuario recibe su puntaje aunque le
-# falte algún ítem. FIML se explica en la carpeta 06_FIML.
+# falte algún ítem. FIML se explica en la carpeta 07_FIML.
 #   source("Tren_de_Guadalajara/05_Puntajes_Factoriales/Puntajes_Factoriales.R")
 # =============================================================================
 

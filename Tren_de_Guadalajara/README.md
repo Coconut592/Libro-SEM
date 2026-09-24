@@ -43,27 +43,20 @@ faltantes están en la tarjeta.
 | [`01_AFE/`](01_AFE/) | Análisis factorial exploratorio | 170 completos | `AFE_CFA.R`, PDF |
 | [`02_AFC/`](02_AFC/) | Análisis factorial confirmatorio | 170 completos | `AFE_CFA.R`, `.inp` |
 | [`03_AFC_2do_Orden/`](03_AFC_2do_Orden/) | AFC de segundo orden | 170 completos | `CFA_2doOrden.inp` |
-| [`04_Confiabilidad_y_Validez/`](04_Confiabilidad_y_Validez/) | Alfa, confiabilidad compuesta, AVE, Fornell-Larcker | 170 completos | `AFE_CFA.R`, PDF (+ validez) |
+| [`04_Confiabilidad_y_Validez/`](04_Confiabilidad_y_Validez/) | Alfa, confiabilidad compuesta, KR-20, validez de contenido, criterio y constructo | 306 / 170 | SEM06, `AFE_CFA.R`, SEM02 |
 | [`05_Puntajes_Factoriales/`](05_Puntajes_Factoriales/) | Puntajes centrados, en escala original y por media ponderada | 306 (FIML) | `CFA_Tren.inp`, `tren.inp`, PDF |
-| [`06_FIML/`](06_FIML/) | Datos faltantes: listwise vs FIML | 306 | `AFE_CFA.R`, `.inp`, PDF |
+| [`06_Invarianza_Factorial/`](06_Invarianza_Factorial/) | AFC multigrupo: responde vs no responde tarjeta | 306 (FIML) | *No viene en las referencias* |
+| [`07_FIML/`](07_FIML/) | Datos faltantes: listwise vs FIML | 306 | `AFE_CFA.R`, `.inp`, PDF |
 
 Cada carpeta trae su script de R, comentado paso a paso, y un `README.md` con la explicación y los
 resultados. Las tablas y gráficas se guardan en su `output/`, que no se versiona.
 
-### ¿Por qué no hay Invarianza Factorial?
+### Nota sobre la Invarianza Factorial
 
-La invarianza factorial es un AFC multigrupo: pide una **variable de grupo** con sentido teórico (sexo,
-línea, edad…) y suficientes casos en cada grupo (alrededor de 100 o más). Ni las referencias ni el `.dta`
-la traen:
-
-- El PDF describe la muestra (59% hombres, líneas 1 y 2), pero el `.dta` no incluye sexo, línea ni
-  estación.
-- Los 17 bloques del `id` no tienen documentación, y con 18 casos cada uno son demasiado pequeños.
-- La única agrupación que se puede sacar del `.dta` es "respondió o no la tarjeta" (194 vs 94). Obliga a
-  quitar el factor Tarjeta, deja un grupo con menos de 100 casos y su modelo configural ya ajusta mal
-  (CFI .89, RMSEA .15). Una invarianza así no tendría interpretación válida.
-
-Por eso se omite. Para hacerla haría falta la base original con una variable de grupo documentada.
+No viene en las referencias y el `.dta` no trae ninguna variable de grupo (sexo, línea, estación). Se
+hizo con la única agrupación que se puede construir de los datos: **responde / no responde la tarjeta**.
+Solo cubre Acceso y Confort, y sus limitaciones quedan documentadas en su
+[README](06_Invarianza_Factorial/README.md). Es un ejercicio ilustrativo.
 
 ## Cómo correrlo en VSCode
 
@@ -77,7 +70,8 @@ source("Tren_de_Guadalajara/02_AFC/AFC.R")
 source("Tren_de_Guadalajara/03_AFC_2do_Orden/AFC_2do_Orden.R")
 source("Tren_de_Guadalajara/04_Confiabilidad_y_Validez/Confiabilidad_y_Validez.R")
 source("Tren_de_Guadalajara/05_Puntajes_Factoriales/Puntajes_Factoriales.R")
-source("Tren_de_Guadalajara/06_FIML/FIML.R")
+source("Tren_de_Guadalajara/06_Invarianza_Factorial/Invarianza_Factorial.R")
+source("Tren_de_Guadalajara/07_FIML/FIML.R")
 ```
 
 También puedes abrir cada script y correrlo sección por sección con `Ctrl+Enter`. Cada script es
@@ -87,6 +81,8 @@ independiente.
 
 - Palacios Blanco, J. L., & Vargas Chanes, D. (2009). *Medición efectiva de la calidad*. Trillas.
 - Brown, T. A. (2006). *Confirmatory factor analysis for applied research*. Guilford Press.
+- Chen, F. F. (2007). Sensitivity of goodness of fit indexes to lack of measurement invariance.
+  *Structural Equation Modeling, 14*(3), 464–504.
 - Fornell, C., & Larcker, D. F. (1981). Evaluating structural equation models with unobservable variables
   and measurement error. *Journal of Marketing Research, 18*(1), 39–50.
 - Hu, L., & Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis.

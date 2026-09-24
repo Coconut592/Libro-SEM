@@ -39,4 +39,4 @@ ni `p8`) y los 170 registros completos.
 7. **Salidas.** `output/solucion_estandarizada_AFC.csv` y `output/diagrama_AFC.png` (`semPaths`).
 
 > Con los 306 casos y FIML (como el PDF) el ajuste mejora: CFI = .920, RMSEA = .102, SRMR = .069. Ver
-> [`06_FIML`](../06_FIML/).
+> [`07_FIML`](../07_FIML/).

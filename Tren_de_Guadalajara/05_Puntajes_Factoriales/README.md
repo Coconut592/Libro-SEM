@@ -7,7 +7,7 @@ Script: `Puntajes_Factoriales.R`. Referencias: `CFA_Tren.inp` y `tren.inp` (`FSC
 análisis.
 
 **Muestra:** como Mplus, se usan los **306 usuarios** con MLR y FIML (`missing = "fiml"`). Así todos
-reciben puntaje aunque les falte algún ítem (ver [`06_FIML`](../06_FIML/)). Los marcadores son los del
+reciben puntaje aunque les falte algún ítem (ver [`07_FIML`](../07_FIML/)). Los marcadores son los del
 `.inp`: `p5@1`, `p63@1` y `p75@1`.
 
 ## Paso a paso
