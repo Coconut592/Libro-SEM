@@ -1,0 +1,12 @@
+# Microdatos: no se versionan, se copian manualmente a data/
+**/data/*
+!**/data/.gitkeep
+
+# Resultados generados por los scripts
+**/output/*
+!**/output/.gitkeep
+
+# R
+.Rhistory
+.Rproj.user/
+.RData
