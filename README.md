@@ -5,7 +5,7 @@ carpeta independiente con sus scripts, su carpeta `data/` y su propio `README.md
 
 | Proyecto | Carpeta | Estado |
 |---|---|---|
-| PREP | `PREP/` | 🔄 Estructura lista; scripts pendientes |
+| PREP | `PREP/` | 🔄 Diagnóstico hecho (qué cubren los archivos y la base); scripts pendientes |
 | Tren de Guadalajara | `Tren_de_Guadalajara/` | ✅ AFE, AFC, 2do orden, confiabilidad y validez, puntajes, invarianza, FIML |
 
 ## Cómo trabajar en VSCode
