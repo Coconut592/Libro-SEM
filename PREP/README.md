@@ -5,28 +5,27 @@ y sus colonias, en **276 espacios**, **169 municipios** y **32 estados** (unos 3
 Como marca el `.gitignore` del repositorio, **no se versiona**: cópiala manualmente a
 `PREP/data/PREP.dta` antes de correr los scripts.
 
-## Estado: diagnóstico hecho, scripts pendientes
+## Estado: los 7 ejercicios están hechos
 
-Se revisó qué traen los archivos de referencia y si la base permite los 7 ejercicios (se corrió cada uno
-con `lavaan` sobre `PREP.dta`). Detalle, cifras y lo que falta en [`00_Diagnostico/`](00_Diagnostico/).
+Cada carpeta trae su script, su `README.md` con los resultados y su `output/`. El diagnóstico previo (qué
+traen los archivos de referencia, hallazgos de la base y documentos que faltan) está en
+[`00_Diagnostico/`](00_Diagnostico/).
 
-> **Todos los archivos de referencia son del piloto** (`Datos_Piloto_MPLus*.dat`, `datos Piloto
-> PREP_Final.dta`; N de 75 a 100, variables `B13`–`G3`). `PREP.dta` es el estudio final, con otra
-> numeración y otro número de ítems por escala. Los modelos no se pueden correr tal cual: hace falta una
-> tabla de equivalencias (propuesta en el diagnóstico, por confirmar).
+> **Todos los archivos de referencia son del piloto** (`B13`–`G3`, 75 a 100 casos). `PREP.dta` es el estudio
+> final, con otra numeración. Los modelos usan una **tabla de equivalencias por contenido** (en el
+> diagnóstico) que falta confirmar con el cuestionario del piloto.
 
-| Carpeta | Ejercicio | En los archivos | Con la base |
-|---|---|---|---|
-| [`01_AFE/`](01_AFE/) | Análisis factorial exploratorio | ✅ `AFE.do`, `EFA_Hogares.inp`, Lab 2 | ✅ |
-| [`02_AFC/`](02_AFC/) | Análisis factorial confirmatorio | ✅ dos `.inp`, PDF, Labs 2 y 5 | ✅ |
-| [`03_AFC_2do_Orden/`](03_AFC_2do_Orden/) | AFC de segundo orden | ⚠️ solo la técnica (Lab 3, otras bases) | ✅ en lo técnico |
-| [`04_Confiabilidad_y_Validez/`](04_Confiabilidad_y_Validez/) | Alfa, confiabilidad compuesta y validez | ⚠️ confiabilidad (Lab 2); **sin validez** | ✅ |
-| [`05_Puntajes_Factoriales/`](05_Puntajes_Factoriales/) | Puntajes factoriales | ✅ `SAVE = FS`, Labs 2 y 5 | ✅ (sin `id` ni `parque`) |
-| [`06_Invarianza_Factorial/`](06_Invarianza_Factorial/) | AFC multigrupo | ❌ **no viene** | ✅ en lo técnico; **sin variable de grupo** |
-| [`07_FIML/`](07_FIML/) | Datos faltantes: listwise vs FIML | ✅ Mplus (PDF), Labs 4 y 5 | ✅ |
+| Carpeta | Ejercicio | Resultado |
+|---|---|---|
+| [`01_AFE/`](01_AFE/) | Análisis factorial exploratorio | 3 factores en espacio público, 4 en colonia, 3 en G |
+| [`02_AFC/`](02_AFC/) | Análisis factorial confirmatorio | CFI .979 / .938 / .985 |
+| [`03_AFC_2do_Orden/`](03_AFC_2do_Orden/) | AFC de segundo orden | Espacio público y colonia sí; G no. Modelo por confirmar |
+| [`04_Confiabilidad_y_Validez/`](04_Confiabilidad_y_Validez/) | Alfa, CR, AVE, discriminante | α .77–.90, validez discriminante en los 11 factores. Falta documento de validez |
+| [`05_Puntajes_Factoriales/`](05_Puntajes_Factoriales/) | Puntajes factoriales | Determinación .92–.96; sin `id` ni `parque` en la base |
+| [`06_Invarianza_Factorial/`](06_Invarianza_Factorial/) | AFC multigrupo | **Ilustrativo** por estado; falta definir el grupo |
+| [`07_FIML/`](07_FIML/) | Listwise vs FIML | +94% de casos en espacio público con el mismo ajuste |
 
-`00_Diagnostico/` no forma parte del libro: es el diagnóstico (script + README) y se puede borrar cuando
-termine esta etapa.
+`00_Diagnostico/` no forma parte del libro y se puede borrar cuando termine esta etapa.
 
 ## Variables (según las etiquetas del `.dta`)
 
@@ -61,5 +60,11 @@ Abre la **raíz del repositorio** (`Libro-SEM`), copia la base a `PREP/data/` y 
 
 ```r
 source("PREP/00_setup_paquetes.R")
-source("PREP/00_Diagnostico/Diagnostico.R")   # unos 7 minutos
+source("PREP/01_AFE/AFE.R")
+source("PREP/02_AFC/AFC.R")
+source("PREP/03_AFC_2do_Orden/AFC_2do_Orden.R")
+source("PREP/04_Confiabilidad_y_Validez/Confiabilidad_y_Validez.R")
+source("PREP/05_Puntajes_Factoriales/Puntajes_Factoriales.R")
+source("PREP/06_Invarianza_Factorial/Invarianza_Factorial.R")
+source("PREP/07_FIML/FIML.R")
 ```

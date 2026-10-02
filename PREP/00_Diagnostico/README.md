@@ -144,7 +144,7 @@ KR-20 no aplica: es para ítems 0/1.
 
 **Puntajes factoriales** (espacio público): regresión (el método de Mplus) con media 0 y D.E. de 1.92, 2.03 y
 2.02 para 7,814 respondientes; en escala original (interceptos en 0 y medias libres) las medias de los
-factores son 6.42, 6.57 y 6.12 (rangos 1.2 a 10.1).
+factores son 6.42, 6.57 y 6.12 (con otro ítem marcador, 6.54, 6.57 y 6.12) (rangos 1.2 a 10.1).
 
 **Invarianza** (espacio público, estados 15, 30 y 26; 1,992 casos: 1,094, 388 y 510): configural CFI = .971, métrica .966 y escalar .957;
 las caídas (.005 y .009) cumplen el criterio de Chen (2007). Solo prueba que el ejercicio corre.
