@@ -88,7 +88,10 @@ los recupera solos, la estructura está en los datos y no solo en mi lectura de 
    satisfacción (ver [`03_AFC_2do_Orden`](../03_AFC_2do_Orden/)).
 
 > **Aviso.** El AFE y el AFC se hacen con la **misma muestra**: el AFC no es una confirmación
-> independiente. Con 294 personas no hay para dividir la muestra en dos.
+> independiente. Con 294 personas no hay para dividir la muestra en dos, pero se probó de todos modos
+> (opcional, [`02_AFC/Validacion_cruzada.R`](../02_AFC/Validacion_cruzada.R)): con tres divisiones al azar
+> en mitades de 147, el AFE de una mitad ubica **44, 46 y 46 de los 46 ítems** en el factor dominante de
+> su bloque (con 12, 11 y 12 factores distintos como dominantes). La estructura se replica.
 
 Salidas en `output/`: `grafica_codo.png`, `comparacion_numero_factores.csv`, `cargas_AFE.csv`,
 `correlaciones_factores_AFE.csv` y `mapa_cargas.png`.

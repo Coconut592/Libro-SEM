@@ -87,7 +87,9 @@ Likelihood*) no imputa: cada persona aporta a la verosimilitud con los ítems qu
 (sin lavaan) da las mismas medias y covarianzas que `lavCor(missing = "fiml")` en los datos reales
 (diferencias de 2 × 10⁻⁶ y 2 × 10⁻⁵). Después, con simulaciones de 300 réplicas (8 variables, 294 casos):
 bajo **MCAR** rechaza H0 el 3% de las veces al nivel del 5% (no la rechaza de más), y con datos **MAR** y
-**MNAR** la rechaza el 100%.
+**MNAR** la rechaza el 100%. Con 300 réplicas el 3% tiene un error de ±1 punto, así que se repitió la
+calibración aparte con 1,500 réplicas (MCAR de 15%, no incluida en el repo): rechaza el **4.7%** al nivel
+del 5% y el 9.0% al del 10%, es decir, la prueba está bien calibrada.
 
 Salidas en `output/`: `ajuste_listwise_vs_FIML.csv`, `estimaciones_listwise_vs_FIML.csv`,
 `cargas_listwise_vs_FIML.csv` y `prueba_little_MCAR.csv`.

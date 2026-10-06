@@ -101,6 +101,12 @@ Script: `AFC.R`. **Sin referencia propia** (en el Tren: `AFE_CFA.R`, los `.inp` 
 > lleva `fit.measures = TRUE`. En total el script tarda unos 5 minutos.
 
 > **Aviso.** El AFE y el AFC usan la **misma muestra**: el AFC no es una confirmación independiente.
+> Como comprobación opcional, `Validacion_cruzada.R` (~5 min) divide la muestra al azar en dos mitades de
+> 147 personas (tres particiones): AFE en una mitad y AFC (ML + FIML) en la otra. El AFC en la mitad
+> ajusta peor y menos estable que con las 294 (CFI = .90, .88 y .83; RMSEA = .058, .062 y .074, contra
+> CFI = .934 y RMSEA = .046 con todos; el modelo tiene 158 parámetros). Una partición dio una carga
+> estandarizada de 1.01 (varianza residual negativa). Conclusión: **la estructura se replica, pero la
+> muestra no alcanza para dividirla**.
 
 ## Referencias
 

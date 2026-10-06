@@ -81,8 +81,9 @@ round(comparacion, 3)
 # lavaan avisa que la columna Chisq trae la estadística estándar: el
 # resultado correcto es "Chisq diff".
 lavTestLRT(fit_1er, fit_2do)
-# Chen (2007): se acepta el modelo más restringido si el CFI no baja más de
-# .010 y el RMSEA no sube más de .015.
+# Reglas de Chen (2007): pensadas para invarianza y aquí usadas como regla
+# práctica. Se acepta el modelo más restringido si el CFI no baja más de .010
+# y el RMSEA no sube más de .015.
 round(c(delta_cfi = comparacion[2, "cfi.robust"] - comparacion[1, "cfi.robust"],
         delta_rmsea = comparacion[2, "rmsea.robust"] - comparacion[1, "rmsea.robust"],
         delta_srmr = comparacion[2, "srmr"] - comparacion[1, "srmr"]), 3)

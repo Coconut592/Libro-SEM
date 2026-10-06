@@ -119,7 +119,7 @@ seguro no tienen pareja); casi todos los demás faltantes son esporádicos.
 | `00_setup_paquetes.R` | Instala los paquetes | — | — |
 | [`00_Exploracion/`](00_Exploracion/) | Qué trae la base y qué análisis admite | 294 | *Sin referencia* |
 | [`01_AFE/`](01_AFE/) | Análisis factorial exploratorio | 294 (FIML) | *Sin referencia* |
-| [`02_AFC/`](02_AFC/) | Análisis factorial confirmatorio (12 factores) | 294 (FIML) | *Sin referencia* |
+| [`02_AFC/`](02_AFC/) | Análisis factorial confirmatorio (12 factores; validación cruzada opcional) | 294 (FIML) | *Sin referencia* |
 | [`03_AFC_2do_Orden/`](03_AFC_2do_Orden/) | AFC de segundo orden (satisfacción con la vida) | 294 (FIML) | *Sin referencia* |
 | [`04_Confiabilidad_y_Validez/`](04_Confiabilidad_y_Validez/) | Alfa, confiabilidad compuesta, AVE, HTMT, validez | 294 | *Sin referencia* |
 | [`05_Puntajes_Factoriales/`](05_Puntajes_Factoriales/) | Puntajes centrados, en escala original y por media ponderada | 294 (FIML) | *Sin referencia* |
@@ -166,6 +166,7 @@ source("Violencia_Guerrero/00_setup_paquetes.R")
 source("Violencia_Guerrero/00_Exploracion/Exploracion.R")                        # ~15 s
 source("Violencia_Guerrero/01_AFE/AFE.R")                                        # ~5 s
 source("Violencia_Guerrero/02_AFC/AFC.R")                                        # ~5 min
+source("Violencia_Guerrero/02_AFC/Validacion_cruzada.R")                         # opcional, ~5 min
 source("Violencia_Guerrero/03_AFC_2do_Orden/AFC_2do_Orden.R")                    # ~30 s
 source("Violencia_Guerrero/04_Confiabilidad_y_Validez/Confiabilidad_y_Validez.R")  # ~1 min
 source("Violencia_Guerrero/05_Puntajes_Factoriales/Puntajes_Factoriales.R")      # ~2 min
