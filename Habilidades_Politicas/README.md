@@ -47,7 +47,7 @@ Se pueden hacer **todos**, con tres matices:
 | **Confiabilidad y validez** | Sí, **salvo validez de criterio** | 4 factores | α .74–.83 (total .91); ω jerárquico .85; AVE .44–.61; **validez discriminante débil** |
 | **Puntajes factoriales** | Sí | 4 dimensiones + HP | Determinación ≥ .92; el promedio simple correlaciona .94–.99 con ellos |
 | **Invarianza factorial** | Sí, **por género** | 161 contra 195 | Se sostiene hasta la estricta (MLR); matiz en las cargas de segundo orden; ajuste de partida mediocre |
-| **FIML** | **No hay faltantes**: ejercicio con datos simulados | 356 | Pendiente: resultados de la simulación |
+| **FIML** | **No hay faltantes**: ejercicio con datos simulados | 356 | Con faltantes MAR, FIML no tiene sesgo (≤ .005) y el listwise subestima ~.04–.05 las cargas sobre HP, usando 152 de 356 casos |
 
 - **Qué se perdió del capítulo:** la base solo trae los **15 ítems** de la versión final. El primer modelo
   (18 reactivos, χ² = 500.2) no se puede reproducir.

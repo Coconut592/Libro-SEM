@@ -59,7 +59,7 @@ max(abs(coef(fit_ml) - coef(fit_fiml)[names(coef(fit_ml))]))    # ~1e-15
 #   probabilidad de 5%, sin relación con nada.
 #  MAR (al azar, dado lo observado): los 12 ítems de HR, SA y AS se pierden
 #   con más probabilidad cuando la persona puntúa ALTO en Influencia
-#   interpersonal (II16-II18, siempre observados). Promedio de faltantes: 8%.
+#   interpersonal (II16-II18, siempre observados). Promedio de faltantes: 7%.
 #   Es el caso que sesga el listwise y que FIML corrige, porque FIML usa II.
 faltantes_mcar <- function(d, p = .05) {
   for (v in items) d[[v]][runif(nrow(d)) < p] <- NA
@@ -80,8 +80,8 @@ rbind(MCAR = c(completos = sum(complete.cases(d_mcar[, items])),
                pct_faltante = 100 * mean(is.na(d_mcar[, items]))),
       MAR  = c(completos = sum(complete.cases(d_mar[, items])),
                pct_faltante = 100 * mean(is.na(d_mar[, items]))))
-# Con solo 5% de respuestas perdidas, el listwise tira el 51% de la muestra
-# (se queda con 174); con MAR se queda con 128 (36%).
+# Con 5% de respuestas perdidas (MCAR), el listwise tira el 54% de la muestra
+# (se queda con 163); con MAR (7% perdido) se queda con 151 (42%).
 
 # Patrones de faltantes (1 = falta) con MAR
 sort(table(apply(is.na(d_mar[, items]) * 1, 1, paste, collapse = "")), decreasing = TRUE)[1:5]
@@ -104,9 +104,11 @@ tabla_ilustrada <- rbind(completo = c(N = 356, cargas_HP(fit_ml)),
                          MAR_listwise  = ilustracion(d_mar)["listwise", ],
                          MAR_FIML      = ilustracion(d_mar)["FIML", ])
 round(tabla_ilustrada, 3)
-# En este conjunto de datos, con MAR el listwise subestima la carga de II
-# en HP y el FIML queda más cerca del resultado completo. Un solo conjunto
-# no basta: el paso 4 lo repite 200 veces.
+# En este conjunto de datos, con MAR el listwise subestima las cargas de II
+# (.720 contra .805 completo) y de HR (.763 contra .824) en HP, y el FIML queda
+# casi igual que el completo (.797 y .837). Con MCAR ninguno está sesgado de
+# forma sistemática (el listwise solo es más ruidoso: AS .982 contra .949).
+# Un solo conjunto no basta: el paso 4 lo repite 200 veces.
 
 # -----------------------------------------------------------------------
 # Paso 4. Repetir 200 veces: sesgo, error y errores estándar
@@ -166,8 +168,15 @@ resumen <- do.call(rbind, lapply(split(resultados, list(resultados$mecanismo, re
 rownames(resumen) <- NULL
 resumen[, -(1:2)] <- round(resumen[, -(1:2)], 3)
 resumen
+# MCAR: ninguno tiene sesgo, pero el listwise usa 165 casos de 356 (46%), su
+# error (RMSE .044) es 4 veces el de FIML (.011) y sus errores estándar 40%
+# mayores (.046 contra .033); y en 18% de las réplicas la solución es
+# inadmisible (0% con FIML).
+# MAR: el listwise tiene sesgo (-.04 en las cargas de HR, AS e II sobre HP;
+# RMSE .054) y 23% de soluciones inadmisibles; FIML no tiene sesgo (<= .005).
 
-# Sesgo medio por carga de segundo orden (HR, SA, AS, II sobre HP)
+# Sesgo medio por carga de segundo orden (HR, SA, AS, II sobre HP). Con MAR el
+# listwise subestima .04 a .05 tres de las cuatro (sobrestima SA, +.04).
 sesgo_HP <- aggregate(sesgo ~ mecanismo + metodo + par, data = resultados[grepl("^HP", resultados$par), ],
                       FUN = mean)
 sesgo_HP$sesgo <- round(sesgo_HP$sesgo, 3)
