@@ -11,7 +11,7 @@ paquetes <- c(
   "psych",       # AFE (fa), KMO, Bartlett, análisis paralelo, alfa, Mardia
   "GPArotation", # rotación oblimin del AFE (la usa psych::fa)
   "ggplot2",     # gráficas (codo, mapa de correlaciones)
-  "lavaan",      # AFC, 2do orden, puntajes factoriales, invarianza, FIML
+  "lavaan",      # AFC, 2do orden, puntajes factoriales, invarianza
   "semPlot"      # diagramas de los modelos
 )
 

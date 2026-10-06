@@ -38,7 +38,7 @@ modelo_1er <- '
 modelo_2do <- paste(modelo_1er, 'HP =~ HR + SA + AS + II', sep = "\n")
 
 # MLR por la no normalidad (ver 02_AFC). Los ítems son completos, así que
-# FIML no cambia nada aquí (ver 07_FIML).
+# FIML no cambiaría nada.
 medidas <- c("chisq.scaled", "df", "pvalue.scaled", "cfi.robust", "tli.robust",
              "rmsea.robust", "srmr")
 

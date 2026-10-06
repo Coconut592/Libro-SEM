@@ -6,17 +6,16 @@ Script: `Diagnostico.R` (unos 10 segundos). Lo que se revisó: el capítulo
 
 ## Resumen
 
-1. **La base alcanza para los 7 ejercicios**, con dos matices: el **FIML** no tiene qué hacer porque no hay
-   faltantes (se simulan, ver [`07_FIML`](../07_FIML/)) y la **validez de criterio** no se puede (no hay
-   criterio externo).
+1. **La base alcanza para 6 de los 7 ejercicios.** El **FIML no se hace**: no hay datos faltantes. Y en
+   confiabilidad y validez falta la **validez de criterio** (no hay criterio externo).
 2. **La base trae solo la versión de 15 ítems.** Faltan `HR5`, `AS12` e `II15`, que el capítulo elimina. El
    primer modelo del capítulo (18 reactivos, χ² = 500.161) **no se puede reproducir**.
 3. **El modelo final del capítulo sí se reproduce**: las 19 cargas de su Tabla 5 coinciden con `lavaan` al
    milésimo, y también sus índices de ajuste, **pero solo si se agrega `Genero` como variable adicional**.
    Los números publicados incluyen, sin querer, a una variable que no es parte del modelo (hallazgo 1).
 4. **La Tabla 5 del capítulo tiene tres cargas con la etiqueta cambiada** (hallazgo 2).
-5. **Lo que el capítulo no hace** y se agregó para completar los siete ejercicios: AFE, confiabilidad
-   compuesta, AVE y validez discriminante, puntajes factoriales, invarianza por género y FIML.
+5. **Lo que el capítulo no hace** y se agregó para completar los ejercicios: AFE, confiabilidad
+   compuesta, AVE y validez discriminante, puntajes factoriales, invarianza por género.
 
 ## 1. Qué trae cada archivo
 
@@ -24,9 +23,9 @@ Script: `Diagnostico.R` (unos 10 segundos). Lo que se revisó: el capítulo
 |---|---|---|
 | Capítulo (PDF, 22 págs.) | *Validación del inventario de habilidades políticas de Ferris mediante AFC de segundo orden* (López-Lemus y Zavala). Marco conceptual del PSI, las condiciones de un AFC (Tabla 2), los índices de ajuste (Tabla 4), el AFC de 18 ítems (Tabla 3) y de 15 (Tabla 5), y la sintaxis de **Mplus** (Anexos 1 y 2) | AFC, AFC de 2.º orden |
 | Presentación (PPTX, 20 láminas) | Resumen del capítulo con la redacción de los ítems (lám. 11), la matriz de correlaciones de Stata (lám. 15), y el **mismo modelo corrido en R con `lavaan`** (láms. 16–19) | AFC, AFC de 2.º orden, confiabilidad (`alpha` en Stata) |
-| `Cap6_AFC_2orden.dta` | **356 filas × 16 columnas**: `Genero` y 15 ítems de 1 a 7, **sin faltantes**, sin etiquetas de variable ni de valor y sin identificador | los 7 |
+| `Cap6_AFC_2orden.dta` | **356 filas × 16 columnas**: `Genero` y 15 ítems de 1 a 7, **sin faltantes**, sin etiquetas de variable ni de valor y sin identificador | los 6 que se hacen |
 
-## 2. Los 7 ejercicios: qué hay y qué se puede
+## 2. Los ejercicios: qué hay y qué se puede
 
 | Ejercicio | ¿Viene en los archivos? | ¿Se puede con la base? | Qué falta |
 |---|---|---|---|
@@ -36,7 +35,7 @@ Script: `Diagnostico.R` (unos 10 segundos). Lo que se revisó: el capítulo
 | Confiabilidad y validez | ⚠️ Alfa (Ferris: .90; lám. 16: `alpha`); validez de constructo conceptual | ✅ Sí, **salvo validez de criterio** | Variable criterio |
 | Puntajes factoriales | ❌ No | ✅ Sí | `id` del estudiante |
 | Invarianza factorial | ❌ No | ✅ **Por género**: hay variable de grupo real | Etiquetas de `Genero` |
-| FIML | ⚠️ Solo `Missing are all (-9999)` | ⚠️ **No hay faltantes**: ejercicio con datos simulados | Una base con faltantes reales |
+| FIML | ⚠️ Solo `Missing are all (-9999)` | ❌ **No se hace:** no hay faltantes | Una base con faltantes reales |
 
 ## 3. Lo que se encontró
 

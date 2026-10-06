@@ -29,7 +29,6 @@ segundo orden**; el resto de los ejercicios se agregaron con el esquema de los o
 | [`04_Confiabilidad_y_Validez/`](04_Confiabilidad_y_Validez/) | Alfa, confiabilidad compuesta, omega, AVE, HTMT, validez | 356 | Capítulo, PPTX lám. 16 |
 | [`05_Puntajes_Factoriales/`](05_Puntajes_Factoriales/) | Puntajes centrados, en escala original y por media ponderada | 356 | *Sin referencia* |
 | [`06_Invarianza_Factorial/`](06_Invarianza_Factorial/) | AFC multigrupo: hombres contra mujeres | 161 y 195 | *Sin referencia* |
-| [`07_FIML/`](07_FIML/) | Datos faltantes: listwise contra FIML (con faltantes **simulados**) | 356 | Anexos (`Missing are all (-9999)`) |
 
 Cada carpeta trae su script de R, comentado paso a paso, y un `README.md` con la explicación y los
 resultados. Las tablas y gráficas se guardan en su `output/`, que no se versiona. **Cada script es
@@ -37,7 +36,7 @@ independiente.**
 
 ## ¿Qué análisis se pueden hacer con esta base?
 
-Se pueden hacer **todos**, con tres matices:
+Se pueden hacer **6 de los 7**:
 
 | Análisis | ¿Se puede? | Modelo y muestra | Resultado principal |
 |---|---|---|---|
@@ -47,8 +46,10 @@ Se pueden hacer **todos**, con tres matices:
 | **Confiabilidad y validez** | Sí, **salvo validez de criterio** | 4 factores | α .74–.83 (total .91); ω jerárquico .85; AVE .44–.61; **validez discriminante débil** |
 | **Puntajes factoriales** | Sí | 4 dimensiones + HP | Determinación ≥ .92; el promedio simple correlaciona .94–.99 con ellos |
 | **Invarianza factorial** | Sí, **por género** | 161 contra 195 | Se sostiene hasta la estricta (MLR); matiz en las cargas de segundo orden; ajuste de partida mediocre |
-| **FIML** | **No hay faltantes**: ejercicio con datos simulados | 356 | Con faltantes MAR, FIML no tiene sesgo (≤ .005) y el listwise subestima ~.04–.05 las cargas sobre HP, usando 152 de 356 casos |
+| **FIML** | **No** | — | La base no tiene datos faltantes |
 
+- **Qué no se pudo:** el FIML (no hay faltantes), la validez de criterio (no hay criterio externo) y el AFC de
+  18 ítems.
 - **Qué se perdió del capítulo:** la base solo trae los **15 ítems** de la versión final. El primer modelo
   (18 reactivos, χ² = 500.2) no se puede reproducir.
 - **La estructura de los datos:** hay un **factor general muy fuerte** (primer eigenvalor 6.7 de 15; omega
@@ -126,9 +127,6 @@ Conviene revisarlas:
 6. **Invarianza por género** con 1 = hombre y 2 = mujer (deducido de las frecuencias). El modelo ajusta
    regular dentro de cada grupo y en los hombres SA y AS correlacionan 1.05 (solución inadmisible), por lo
    que las conclusiones de invarianza son más débiles.
-7. **FIML con faltantes simulados:** como no hay faltantes reales, se quitan datos a propósito (MCAR y MAR,
-   200 repeticiones). Es una demostración didáctica, no un resultado sobre los datos reales.
-
 ## Qué conviene confirmar con las autoras
 
 - **¿El archivo de Mplus (`HP15R.dta.dat`) incluye `Genero`?** Explicaría el ajuste publicado (101 gl).
@@ -152,11 +150,10 @@ source("Habilidades_Politicas/03_AFC_2do_Orden/AFC_2do_Orden.R")                
 source("Habilidades_Politicas/04_Confiabilidad_y_Validez/Confiabilidad_y_Validez.R")  # ~5 s
 source("Habilidades_Politicas/05_Puntajes_Factoriales/Puntajes_Factoriales.R")      # ~5 s
 source("Habilidades_Politicas/06_Invarianza_Factorial/Invarianza_Factorial.R")      # ~15 s
-source("Habilidades_Politicas/07_FIML/FIML.R")                                      # ~10 min (200 repeticiones x 2)
 ```
 
 También puedes abrir cada script y correrlo sección por sección con `Ctrl+Enter`. Cada script es
-independiente. En `07_FIML` puedes bajar `n_rep` de 200 a 50 para una versión de ~3 min.
+independiente.
 
 ## Referencias
 
