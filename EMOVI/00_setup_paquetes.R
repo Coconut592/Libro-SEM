@@ -3,8 +3,7 @@
 # 00 - Instalación y carga de paquetes
 # =============================================================================
 # Referencias: tesis de Sánchez Flores (UNAM, 2019; Mplus) y diccionario de la
-# ESRU-EMOVI 2023. Son los paquetes que usa el diagnóstico; los demás ejercicios
-# agregarán los suyos cuando se hagan.
+# ESRU-EMOVI 2023. Son los paquetes que usan el diagnóstico y los 7 ejercicios.
 
 paquetes <- c(
   "readstata13", # leer las bases de Stata (.dta)

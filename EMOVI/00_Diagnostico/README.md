@@ -5,6 +5,10 @@ Script: `Diagnostico.R` (unos 40 segundos). Lo que se revisó: las dos tesis (la
 escaneadas de la misma tesis), el diccionario `Diccionario_ESRU_EMOVI_2023.xlsx` (hojas Hogar y Entrevistado)
 y las bases `hogar_2023.dta` e `ingreso_2017.dta`. Cada cifra sale de las bases reales, en R (`lavaan`, `psych`).
 
+> **Actualización:** este diagnóstico se hizo antes de tener el Entrevistado 2023. Ya llegó (recortado a la CDMX,
+> 740 casos) y los 7 ejercicios están hechos en [`01_AFE`](../01_AFE/) a [`07_FIML`](../07_FIML/). Lo que sigue
+> es el diagnóstico original; `Recortar_Entrevistado.R` generó el archivo de trabajo.
+
 ## Resumen
 
 1. **Con lo que se subió no se pueden hacer los análisis de movilidad social.** Falta el archivo del
