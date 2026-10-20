@@ -17,8 +17,8 @@ y las bases `hogar_2023.dta` e `ingreso_2017.dta`. Cada cifra sale de las bases 
 3. **`ingreso_2017.dta` no tiene estructura factorial** (una variable, `ingc_pc`) y **no se une** con el roster
    2023: es otra ola y otra llave (hallazgo 2).
 4. **Con el Entrevistado 2023, según el diccionario, los 7 ejercicios son factibles** (sección 2) y el modelo de
-   la tesis se reconstruye, con dos huecos: **no viene el ISEI** (hay SINCO, CMO y clase) y **no hay "edad a la
-   que dejó la escuela"** (hallazgos 5 y 6).
+   la tesis se reconstruye, con dos huecos: **no viene el ISEI** (se usan las 6 clases ocupacionales que sí trae) y
+   **no hay "edad a la que dejó la escuela"** (hallazgos 5 y 6).
 5. **Lo que la tesis no hace** y se agregaría: AFE, AFC de 2.º orden, invarianza de medida (compara trayectorias
    entre sexos y edades con pruebas de Wald sin probar antes que el instrumento mide igual) y puntajes (salvo el
    índice de riqueza).
@@ -40,7 +40,7 @@ y las bases `hogar_2023.dta` e `ingreso_2017.dta`. Cada cifra sale de las bases 
 | Ejercicio | ¿Viene en los archivos? | ¿Se puede con lo subido? | ¿Con el Entrevistado 2023? (según el diccionario) | Qué falta |
 |---|---|---|---|---|
 | AFE | ❌ No: la tesis va directo al AFC | ⚠️ Solo `p12` (no es movilidad) | ✅ Riqueza (`p26`–`p32`), carencias (`p106`), depresión (`p107`), colonia (`p33`, `p98`) | El Entrevistado |
-| AFC | ✅ Sí: Origen social, Educación, Primera ocupación y el índice de riqueza (CFA binario, n = 17,665) | ⚠️ Solo `p12` | ✅ Los de la tesis y la riqueza del hogar | El Entrevistado y el ISEI |
+| AFC | ✅ Sí: Origen social, Educación, Primera ocupación y el índice de riqueza (CFA binario, n = 17,665) | ⚠️ Solo `p12` | ✅ Los de la tesis y la riqueza del hogar | El Entrevistado |
 | AFC 2.º orden | ❌ No | ⚠️ Corre, pero da un caso Heywood (hallazgo 4) | ✅ Riqueza (vivienda, casa, bienes, activos) u Origen social (riqueza, educación y ocupación de los padres) | Decidir el modelo |
 | Confiabilidad y validez | ⚠️ α, Ω y KR-20; **validez no** | ⚠️ Solo `p12` (α ordinal .935) | ✅ α, ω, KR-20, AVE, discriminante; criterio externo con `p103`/`p104` o `ingc_pc` | Documento de validez |
 | Puntajes factoriales | ⚠️ Solo el índice de riqueza (Anexo 2) | ⚠️ Solo `p12`: el 90.5 % recibe el mismo puntaje | ✅ Índice de riqueza y de las demás escalas | El Entrevistado |
@@ -62,8 +62,9 @@ llave para unirlas.
 - `ingc_pc`: mínimo 277, mediana 3,335, media 5,561, máximo 152,903; asimetría 6.8; sin faltantes ni ceros.
 - Con una sola variable no hay AFE ni AFC. Tampoco se une con el roster 2023: las dos EMOVI son **muestras
   independientes** (no un panel) y `index` (2 a 28,647) no es el `folio` (ningún folio coincide).
-- Cuidado con el nombre: el Entrevistado 2023 trae **su propia** `ingc_pc` (última variable del diccionario).
-  Sirve como criterio externo para la validez de la EMOVI 2017 si se consigue el Entrevistado 2017.
+- Cuidado con el nombre: el diccionario del Entrevistado 2023 lista **su propia** `ingc_pc` (la última variable),
+  así que el ingreso 2023 debería venir dentro de ese archivo. `ingreso_2017.dta` es el archivo de ingreso que la
+  EMOVI 2017 distribuye aparte; solo serviría como criterio externo si se trabajara el Entrevistado 2017.
 
 ### Hallazgo 3. Lo que el roster sí da del tema
 
@@ -166,26 +167,30 @@ disponibles, así que conviene confirmar qué se hizo.
 
 **Documentos:**
 
-1. **El archivo del Entrevistado de la ESRU-EMOVI 2023** (`.dta`, 294 variables). Es lo único indispensable.
+1. **El archivo del Entrevistado de la ESRU-EMOVI 2023** (`.dta`, 294 variables). Es lo único indispensable. Como
+   pesa 39 MB, se recorta a la CDMX con [`Recortar_Entrevistado.R`](Recortar_Entrevistado.R) antes de subirlo.
 2. Si se quiere **replicar la tesis con 2017**: el Entrevistado 2017 (se une con `ingreso_2017.dta` por `folio`) y
    su diccionario.
-3. **La tabla SINCO → CIUO-08 → ISEI-08** (la tesis cita a Ganzeboom, 2010; la correspondencia SINCO–CIUO la
-   publica INEGI, por confirmar) o decidir usar las 6 clases ocupacionales (`clase`, `clasep`, `clasem`).
+3. ~~La tabla SINCO → CIUO-08 → ISEI-08~~ **Ya no hace falta:** se usan las 6 clases ocupacionales.
 4. La **regla de conversión nivel + grado → años de escolaridad** (el Cuadro 5 de la tesis da las 6 categorías,
    no los años).
 5. Un **documento de validez** (en el Tren se usó SEM06) y, si se quiere validez de criterio, confirmar cuál es
    el criterio (¿`p103`/`p104`, `ingc_pc`?).
 
-**Decisiones:**
+**Decisiones (ya tomadas):**
 
-1. ¿Se replica el modelo de la tesis con 2023 (¿solo CDMX, `entidad` = 9, o todo el país?) o se parte de otra
-   pregunta?
-2. ¿Qué escala va en cada ejercicio? Propuesta: AFE, AFC, confiabilidad y puntajes con la **riqueza del hogar de
-   origen**; **2.º orden** con sus cuatro bloques; AFC del SEM de la tesis y **FIML** ahí (continuos); invarianza
-   por **sexo y cohorte**, y en el tiempo con la colonia.
-3. ¿ISEI o clase ocupacional (6 categorías, ordinal)?
-4. ¿Se usan el ponderador `factor` y el diseño (`upm_muestra`, `est`)?
-5. ¿Ítems binarios como ordinales (WLSMV, sin FIML) o como continuos (MLR + FIML)?
+1. **Solo la CDMX** (`entidad` = 9), como la tesis.
+2. **Las 6 clases ocupacionales** de la base (`clase`, `clasep`, `clasem`, `clase1`), sin ISEI. Esto elimina la
+   necesidad de la tabla SINCO → ISEI (punto 3 de arriba).
+3. **Sin ponderador**, como la tesis.
+4. **Una sola escala para los ejercicios:** la riqueza del hogar de origen (`p26`, `p29`, `p31`, `p32`), con ítems
+   binarios como ordinales (WLSMV) y el criterio 90-10 de la tesis; **2.º orden** con los bloques que salgan del AFE
+   (vivienda, bienes y activos, a priori); invarianza por sexo y por 25–40 contra 41–64 años. El **FIML** va en el AFC
+   de Origen social con indicadores continuos (MLR). Se confirma con los datos.
+5. El Entrevistado no cabe como adjunto (39 MB): se recorta a la CDMX con `Recortar_Entrevistado.R`.
+
+Los puntos 2 y 4 de los documentos siguen pendientes: la regla nivel + grado → años de escolaridad y, si se quiere
+validez de criterio, confirmar el criterio (`p104`, `ingc_pc`).
 
 Salidas (en `output/`, que no se versiona): `mapeo_tesis_2023.csv`, `bloques_items_2023.csv`,
 `bateria_dificultades_prevalencia.csv` y `bateria_dificultades_ajuste.csv`.
