@@ -61,7 +61,7 @@ nrow(vera)                                   # 1,088
 # Paso 3. Los ítems: etiqueta, prevalencia y faltantes
 # -----------------------------------------------------------------------
 # Las etiquetas de Stata se cortan a 80 caracteres: la redacción de los reactivos
-# queda incompleta (p. ej. "...había gol"). Se necesita el cuestionario.
+# queda incompleta (p. ej. "...había gol"). Se usan tal cual.
 etiquetas <- setNames(trimws(attr(vera, "var.labels")), names(vera))
 n_valido <- colSums(!is.na(vera[, items]))
 diccionario <- data.frame(

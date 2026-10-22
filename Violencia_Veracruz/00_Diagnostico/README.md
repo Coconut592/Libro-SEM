@@ -41,7 +41,7 @@ salidas de Mplus (el LCA que produjo `c`) no están**: `c` se toma tal como vien
 | AFE | ❌ No | ✅ Sí: 5 factores claros (6 máximo sin Heywood) | — |
 | AFC | ❌ No (solo LCA) | ✅ Sí: 6 ámbitos, CFI .987, RMSEA .019 (SRMR .110 es alto) | — |
 | AFC 2.º orden | ❌ No | ✅ Sí, y **contrastable** (9 gl más) | — |
-| Confiabilidad y validez | ❌ No | ✅ KR-20, CR, AVE, HTMT, omega. ⚠️ **Criterio**: solo `c_r` (no independiente) y las sociodemográficas | Documento de validez y un criterio externo |
+| Confiabilidad y validez | ❌ No | ✅ KR-20, CR, AVE, HTMT, omega. ⚠️ **Criterio**: solo `c_r` (no independiente) y las sociodemográficas | Nada: el criterio externo se deja así |
 | Puntajes factoriales | ⚠️ Solo la clase `c` | ✅ Sí, con `id` | — |
 | Invarianza factorial | ❌ No (solo `ologit` por variable) | ⚠️ **Parcial**: edad y escolaridad, con 5 ámbitos (sin trabajo) | Variable de sexo (todas son mujeres), de región o municipio |
 | FIML | ❌ No (Mplus lo hace por defecto) | ✅ Sí, pero con los ítems 0/1 **como continuos** (`lavaan` no tiene FIML con ordinales) | — |
@@ -151,17 +151,16 @@ Para la invarianza, el corte más viable es **edad** (665 contra 421) y después
 grupo más chico los ítems de trabajo tienen entre 3 y 9 mujeres con "Sí" y el modelo de seis ámbitos se vuelve inadmisible
 (ver [`06_Invarianza_Factorial`](../06_Invarianza_Factorial/)).
 
-## 4. Qué necesito
+## 4. Qué no se tiene y cómo se resuelve
 
-**Documentos:**
+No hay más documentos ni más bases que los dos archivos, y el proyecto sigue con ellos:
 
-1. **El cuestionario** (o las etiquetas completas): las de Stata están cortadas a 80 caracteres. Con él se confirma la redacción de
-   los 24 ítems, qué dice cada letra y qué reactivos faltan (`p163`, `p164`, `p174`, `p181`, `p182`).
-2. **El código y las salidas de Mplus** (`ACLmplus`): para ver cómo se obtuvo `c` y confirmar las 3 clases.
-3. **Un documento de validez** (en el Tren se usó SEM06) y, si se quiere validez de criterio, un criterio externo que no salga de
-   estos mismos ítems.
-4. Si existe, **sexo, región o municipio, y el diseño muestral** (ponderador, UPM, estrato).
-5. Confirmar el **`merge`**: de dónde viene el archivo "using", y por qué el `id` 907 quedó sin ítems.
+1. **Etiquetas cortadas a 80 caracteres:** se usan tal cual. Los ámbitos y su contenido se infieren de las etiquetas y de las letras de los reactivos (no se pide el cuestionario).
+2. **Sin el código de Mplus (`ACLmplus`):** `c` se toma como viene y no se reproduce el análisis de clases latentes. Los 7 ejercicios se hacen con los scripts de los otros
+   proyectos como ejemplo.
+3. **Sin documento de validez ni criterio externo:** la validez de criterio se deja como está (`c_r` y las sociodemográficas, con sus límites).
+4. **Sin sexo, región, municipio ni diseño muestral:** invarianza por edad y escolaridad, y sin ponderador.
+5. **El `merge`:** el `id` 907 (sin ítems) simplemente se quita.
 
 **Decisiones (ya tomadas):**
 

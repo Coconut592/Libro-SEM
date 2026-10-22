@@ -8,8 +8,8 @@ Base de trabajo: `data/BASE_ACLnew.dta` (Stata 13). Como marca el `.gitignore` d
 sobre violencia): cópiala manualmente a `Violencia_Veracruz/data/BASE_ACLnew.dta` antes de correr los scripts.
 
 **La única referencia es `Scripts.do`**: recodifica la clase (`c_r`), corre una regresión logística ordinal contra las sociodemográficas y exporta los 24 ítems a
-Mplus. **No hay cuestionario, ni documento de validez, ni el código de Mplus.** Todo lo que se sabe de los ítems sale de sus etiquetas (cortadas a 80 caracteres)
-y de los propios datos, y se usó la estructura de EMOVI (ítems 0/1) como plantilla. Ver [`00_Diagnostico`](00_Diagnostico/).
+Mplus. **No hay cuestionario, ni documento de validez, ni el código de Mplus, y así se trabaja:** todo lo que se sabe de los ítems sale de sus etiquetas (cortadas a 80
+caracteres, se usan tal cual) y de los propios datos, y los scripts siguen los de los otros proyectos (EMOVI, para ítems 0/1, como plantilla). Ver [`00_Diagnostico`](00_Diagnostico/).
 
 ## ¿Qué análisis se pueden hacer con esta base?
 
@@ -141,13 +141,16 @@ Conviene revisarlas:
 - **Invarianza sin trabajo y sin sexo:** solo para 20 ítems y los dos cortes disponibles; las medias latentes no se comparan (no están bien identificadas).
 - **Lo que no se hizo:** reproducir el **análisis de clases latentes** de Mplus (no está su código) ni compararlo con los modelos factoriales; ni el `ologit` ajustado por todas las covariables a la vez.
 
-## Qué conviene confirmar con la fuente
+## Limitaciones que se aceptan
 
-- **El cuestionario** (o las etiquetas completas): la redacción de los 24 ítems, qué dicen `p144` ("la ob…"), `p161`, `p162` y `p165` (cortadas), y por qué faltan `p163`, `p164`, `p174`, `p181` y `p182`.
-- **El código y las salidas de Mplus** del análisis de clases latentes: ¿se usaron los 24 ítems?, ¿cómo se eligieron 3 clases?
-- **Qué es el archivo "using" del `merge`** y por qué el `id` 907 quedó sin ítems (y los 267 huecos en la serie de `id`).
-- **Una variable criterio** externa (para la validez de criterio), **sexo, región o municipio**, y el **diseño muestral** (ponderador, UPM, estrato).
-- Si la categoría **65 o más** de `p2` existe en la encuesta (la base no trae a nadie).
+No hay más documentos ni más bases que `BASE_ACLnew.dta` y `Scripts.do`, y el proyecto sigue con lo que hay:
+
+- **Etiquetas cortadas a 80 caracteres.** Se usan tal cual. La redacción de `p144` ("la ob…"), `p161`, `p162` y `p165` queda incompleta, y no se sabe por qué faltan los reactivos
+  `p163`, `p164`, `p174`, `p181` y `p182`. Los ámbitos se infieren de las etiquetas y de las letras de los reactivos, y los confirma el AFE.
+- **Sin el código de Mplus.** `c` se toma como viene (3 clases): no se sabe si el análisis de clases latentes usó los 24 ítems ni cómo se eligieron las clases. No se reproduce.
+- **Sin criterio externo.** La validez de criterio se deja así: `c_r` (no independiente) y las sociodemográficas como correlatos, sin pretender más.
+- **Sin sexo, región, municipio ni diseño muestral:** la invarianza es por edad y escolaridad, y todo va sin ponderar.
+- **Sin explicación del `merge`:** el `id` 907 (sin ítems) se quita y los 267 huecos en la serie de `id` se aceptan. La categoría "65 o más" de `p2` no aparece.
 
 ## Cómo correrlo en VSCode
 

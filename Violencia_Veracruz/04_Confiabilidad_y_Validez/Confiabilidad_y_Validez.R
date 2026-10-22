@@ -118,7 +118,7 @@ write.csv(data.frame(indicador = names(omegas), valor = as.numeric(omegas)),
 # (infancia, familia, pareja, trabajo, comunidad, escuela) y, dentro de ellos, formas distintas
 # (emocional, física, sexual, económica). Pero la base trae una SELECCIÓN de los reactivos
 # del cuestionario (faltan p163, p164, p174, p181 y p182) y las etiquetas de Stata están cortadas
-# a 80 caracteres: la cobertura real solo se puede juzgar con el cuestionario.
+# a 80 caracteres (se usan tal cual): la cobertura es la que dan esas etiquetas.
 
 # -----------------------------------------------------------------------
 # Paso 5. Validez discriminante: HTMT (correlaciones policóricas)

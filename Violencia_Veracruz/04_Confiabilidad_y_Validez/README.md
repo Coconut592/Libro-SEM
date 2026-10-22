@@ -41,7 +41,7 @@ Los ámbitos con **eventos raros o heterogéneos** (trabajo y comunidad) tienen 
 
 4. **Validez de contenido (cualitativa).** Los 24 ítems cubren seis ámbitos de violencia contra las mujeres y formas distintas (según las etiquetas:
    emocional, física, sexual, económica). Pero la base trae **una selección** de los reactivos (faltan `p163`, `p164`, `p174`, `p181` y `p182`) y las etiquetas
-   están cortadas a 80 caracteres: la cobertura real solo se puede juzgar con el cuestionario.
+   están cortadas a 80 caracteres (se usan tal cual): la cobertura es la que dan estas etiquetas.
 5. **Validez discriminante: HTMT** (promedio de las correlaciones entre ítems de dos factores / raíz del producto de los promedios dentro de cada uno;
    se pide < .85) y **Fornell-Larcker** (AVE > r² con cualquier otro factor):
 
@@ -95,5 +95,5 @@ Los ámbitos con **eventos raros o heterogéneos** (trabajo y comunidad) tienen 
 **Salidas** (`output/`): `confiabilidad.csv`, `kr20_por_item.csv`, `omega_factor_general.csv`, `htmt.csv`, `puntajes_por_clase.csv` y
 `correlatos_sociodemograficos.csv`.
 
-**Lo que falta.** Una **validez de criterio** de verdad pide una variable externa que mida lo mismo (otra escala de violencia, denuncias, salud
-mental...) y que no salga de estos 24 ítems. Y un documento de validez que diga qué pruebas se esperan (en el Tren se usó SEM06).
+**Validez de criterio.** Se deja así: la base no trae un criterio externo (otra escala de violencia, denuncias, salud mental...) que no salga de estos 24 ítems, y
+no se busca otro. Los pasos 6 y 7 son lo que hay, con sus límites.
