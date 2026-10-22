@@ -10,6 +10,7 @@ carpeta independiente con sus scripts, su carpeta `data/` y su propio `README.md
 | Violencia Guerrero | `Violencia_Guerrero/` | ✅ Exploración, AFE, AFC, 2do orden, confiabilidad y validez, puntajes, invarianza, FIML |
 | Habilidades Políticas | `Habilidades_Politicas/` | ✅ Diagnóstico, AFE, AFC, 2do orden, confiabilidad y validez, puntajes, invarianza (por género) |
 | EMOVI | `EMOVI/` | ✅ Diagnóstico, AFE, AFC, 2do orden, confiabilidad y validez, puntajes, invarianza (sexo y edad), FIML |
+| ENCO | `ENCO/` | 🔎 Diagnóstico hecho: la base (agosto 2026, 15 ítems, n = 2,050) alcanza para los 7 ejercicios; scripts por confirmar |
 
 ## Cómo trabajar en VSCode
 
@@ -20,5 +21,5 @@ carpeta independiente con sus scripts, su carpeta `data/` y su propio `README.md
 
 ## Datos
 
-Los microdatos (`.dta`, `.csv`, etc.) **no se versionan** (ver `.gitignore`): cada quien copia la base
+Los microdatos (`.dta`, `.csv`, `.DBF`, etc.) **no se versionan** (ver `.gitignore`): cada quien copia la base
 a la carpeta `data/` del proyecto correspondiente.
