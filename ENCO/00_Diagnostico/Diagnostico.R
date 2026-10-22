@@ -149,7 +149,8 @@ round(summary(glm(no_sabe ~ enco$edad + I(enco$SEX == "2"), family = binomial))$
 # edad +.022 por año (p < .001), mujer +.41 (p = .046)
 
 # Colas raras: P12 "Disminuirán mucho" tiene 5 casos y "poco" 26. Con subgrupos
-# (invarianza) esa categoría queda vacía y lavaan se detiene; se funden las dos.
+# (invarianza) esa categoría queda vacía y lavaan se detiene; aquí se funden las dos.
+# (El diagnóstico las funde; los ejercicios 01 a 07 NO: decisión del proyecto, ver el README.)
 table(x$P12)                                 # 1: 5, 2: 26, 3: 217, 4: 606, 5: 332, 6: 859
 x$P12[x$P12 == 1] <- 2; x$P12 <- x$P12 - 1   # ahora 1 a 5
 

@@ -6,6 +6,14 @@ la base de datos» de la ENCO, 06/10/2025, 17 págs.) y las tres tablas de **ago
 `psych`), con los mismos estimadores y criterios de los proyectos anteriores (ítems ordinales con WLSMV, `efa()` con
 oblimin, criterio de Chen para invarianza, EBM para puntajes).
 
+> **Actualización:** las decisiones de la sección 6 ya se tomaron y los 7 ejercicios están hechos en
+> [`01_AFE`](../01_AFE/) a [`07_FIML`](../07_FIML/). Lo que sigue es el diagnóstico original. **Diferencia
+> importante:** este diagnóstico fundía las colas de `P12` y los ejercicios **no** (decisión del proyecto); por eso
+> la invarianza por escolaridad en 4 niveles que se probó aquí no es viable en 06 (queda en 2 niveles; ver
+> [`06`](../06_Invarianza_Factorial/README.md)). Las demás cifras casi no cambian. Decisiones: 4 factores; `P11` se
+> queda; `P12` no se funde; sin ponderador (justificación en [`02`](../02_AFC/README.md)); grupos de invarianza:
+> sexo, edad, escolaridad y gran ciudad; FIML solo con los faltantes reales (sin simulaciones).
+
 ## Resumen
 
 1. **La base alcanza para los 7 ejercicios.** El cuestionario básico (`ENCOCB`) trae **2,050 personas de 18 a 97
