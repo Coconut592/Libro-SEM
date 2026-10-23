@@ -178,6 +178,7 @@ bloques <- list(
 
 matriz_cor <- function(x, tipo) suppressWarnings(suppressMessages(switch(tipo,
   cont = cor(x, use = "pairwise.complete.obs"), ord = polychoric(x)$rho, bin = tetrachoric(x)$rho)))
+RNGkind("L'Ecuyer-CMRG")                     # fa.parallel simula en varios núcleos: así la semilla es reproducible
 set.seed(2021)
 tabla_bloques <- do.call(rbind, lapply(names(bloques), function(n) {
   bl <- bloques[[n]]; x <- enb[, bl$items]; r <- matriz_cor(x, bl$tipo)
@@ -185,7 +186,7 @@ tabla_bloques <- do.call(rbind, lapply(names(bloques), function(n) {
   ev <- eigen(r)$values
   f1 <- suppressWarnings(fa(r, nfactors = 1, n.obs = nrow(x), fm = if (bl$tipo == "cont") "ml" else "minres"))
   ap <- invisible(capture.output(pa <- suppressWarnings(fa.parallel(r, n.obs = sum(complete.cases(x)), fa = "fa",
-        fm = if (bl$tipo == "cont") "ml" else "minres", n.iter = 20, plot = FALSE))))
+        fm = if (bl$tipo == "cont") "ml" else "minres", n.iter = 100, plot = FALSE))))
   data.frame(bloque = n, descripcion = bl$nombre, k = length(bl$items), escala = bl$escala, tipo = bl$tipo,
              n_completos = sum(complete.cases(x)), pct_faltante = round(100 * mean(is.na(as.matrix(x))), 1),
              pct_modal_medio = round(mean(modal), 1), items_mas_90 = sum(modal > 90),

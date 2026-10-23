@@ -12,7 +12,7 @@ carpeta independiente con sus scripts, su carpeta `data/` y su propio `README.md
 | EMOVI | `EMOVI/` | ✅ Diagnóstico, AFE, AFC, 2do orden, confiabilidad y validez, puntajes, invarianza (sexo y edad), FIML |
 | ENCO | `ENCO/` | ✅ Diagnóstico, AFE, AFC, 2do orden, confiabilidad y validez, puntajes, invarianza (sexo, edad, escolaridad y ciudad), FIML |
 | Violencia Veracruz | `Violencia_Veracruz/` | ✅ Diagnóstico, AFE, AFC, 2do orden, confiabilidad y validez, puntajes, invarianza (edad y escolaridad), FIML |
-| ENBIARE | `ENBIARE/` | 🟡 Diagnóstico hecho: la base alcanza para 6 de los 7 ejercicios (sin FIML); falta elegir la escala |
+| ENBIARE | `ENBIARE/` | ✅ Diagnóstico, AFE, AFC, 2do orden, confiabilidad y validez, puntajes, invarianza (tamaño de localidad); sin FIML (no hay faltantes) |
 
 ## Cómo trabajar en VSCode
 

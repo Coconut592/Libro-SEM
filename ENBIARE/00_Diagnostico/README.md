@@ -4,6 +4,11 @@ Script: `Diagnostico.R` (unos 4 minutos). Lo que se revisó: la base `conjunto_d
 su diccionario `diccionario_datos_tenbiare_enbiare_2021.csv` (ENBIARE 2021, INEGI). Cada cifra sale de la base
 real, en R (`lavaan` 0.6-17, `psych`); cada ejercicio se corrió en los bloques de ítems candidatos.
 
+> **Actualización:** este diagnóstico se hizo antes de elegir escala. Se aceptó la propuesta (**satisfacción `pa3` como principal
+> y confianza `pb1` como segunda**) y **se omitió el FIML**; los 6 ejercicios restantes están en [`01_AFE`](../01_AFE/) a
+> [`06_Invarianza_Factorial`](../06_Invarianza_Factorial/). Lo que sigue es el diagnóstico original; las secciones 5 y 6 se
+> dejaron como estaban y la 6 cierra con las decisiones tomadas.
+
 ## Resumen
 
 1. **La base alcanza para 6 de los 7 ejercicios.** AFE, AFC, 2.º orden, confiabilidad y validez, puntajes e
@@ -187,14 +192,15 @@ negativo, con 2.º orden (justo identificado).
 
 | Bloque | KMO | Kaiser | Paralelo | Solución elegida | RMSEA | TLI |
 |---|---|---|---|---|---|---|
-| `pa3` (17) | .92 | 2 | 6 | **5 factores:** nivel de vida y logros (`01`-`03`, `08`), relaciones (`04`-`07`), autonomía y actividad (`09`, `10`, `12`), hogar y vecindario (`13`, `14`), ciudad y país (`11`, `15`-`17`) | .035 | .968 |
+| `pa3` (17) | .92 | 2 | 6 (5 con los datos completos; caso límite) | **5 factores:** nivel de vida y logros (`01`-`03`, `08`), relaciones (`04`-`07`), autonomía y actividad (`09`, `10`, `12`), hogar y vecindario (`13`, `14`), ciudad y país (`11`, `15`-`17`) | .035 | .968 |
 | `pa4` (10) | .89 | 2 | 3 | **2 factores:** positivo (`01`-`05`) y negativo (`06`-`10`); un 3.º no define nada (cargas de −.23 a .29) | .093 | .908 |
 | `pb1` (12) | .90 | 2 | 5 | **5 factores:** interpersonal (`01`, `02`), policías (`04`, `05`), Guardia Nacional y Ejército (`06`, `07`), justicia (`08`, `09`), cámaras, partidos y funcionarios (`10`-`12`); `pb1_03` sin factor | .021 | .997 |
 | `pd2` + `pd3` (9) | .92 | 1 | 4 | **2 factores:** depresión (`pd2_*`) y ansiedad (`pd3_*`) | .071 | .973 |
 | `pc3` (8) | .86 | 2 | 4 | **3 factores:** comunidad (`pc3_1` vecinos, `pc3_2` iglesia), escuela / deporte / trabajo (`3`-`5`), familia y amistades (`6`-`8`) | .056 | .964 |
 | `pc2` (5) | .79 | 1 | 2 | **2 factores:** mensajería y Facebook (`1`, `4`); Twitter, Instagram y TikTok (`2`, `3`, `5`) | .066 | .981 |
 
-El análisis paralelo pide más factores que Kaiser (6 contra 2 en `pa3`); la elección salió del ajuste (RMSEA ≤ .06 y
+El análisis paralelo pide más factores que Kaiser (6 contra 2 en `pa3`, aunque con los datos completos y la semilla 2021 sale
+5 y con otras semillas, 5 o 6: es un caso límite, ver [`01_AFE`](../01_AFE/)); la elección salió del ajuste (RMSEA ≤ .06 y
 TLI ≥ .95) y de que los factores se pudieran nombrar.
 
 **AFC de primer y segundo orden** (`std.lv = TRUE`; MLR en los 0-10, WLSMV en los ordinales):
@@ -310,16 +316,16 @@ WLSMV.
 3. Un **documento de validez**, si se quiere replicar el criterio de otros proyectos (en el Tren, SEM06). Aquí no
    hace falta para el criterio: la base trae `pa1`, `pa5`, depresión y ansiedad.
 
-**Decisiones (con propuesta):**
+**Decisiones (tomadas):**
 
-| Tema | Propuesta |
+| Tema | Decisión |
 |---|---|
-| Escala(s) de los ejercicios | **Satisfacción con 17 aspectos (`pa3`)** como escala principal: es el núcleo del cuestionario, con 5 factores y 2.º orden. **Confianza (`pb1`)** como segunda, que es la que más limpio pasa la validez. Afecto y salud mental como complemento. A elegir |
-| Estimador | MLR para los 0-10 (11 categorías) y WLSMV para los de 3 a 5 categorías. Para `pa3`, mostrar también WLSMV |
-| Ponderador | Sin ponderador (cluster por UPM no cambia nada; los pesos solo mueven los errores estándar x1.45) |
-| Grupo de la invarianza | `tloc` (4 tamaños de localidad) mientras no llegue la tabla sociodemográfica; después, sexo y edad |
-| AFE y AFC en la misma muestra | Con 31 mil casos se puede partir la muestra (AFE en una mitad y AFC en la otra, como en Violencia Guerrero) |
-| FIML | Tres opciones: **(a)** omitirlo, como en Habilidades Políticas, porque las escalas no tienen faltantes; **(b)** usar `ph1_*`/`ph2_*` (único con faltantes parciales, ítems como continuos); **(c)** simular faltantes MCAR/MAR en `pa3` |
+| Escala(s) de los ejercicios | **Satisfacción con 17 aspectos (`pa3`)** como escala principal (5 factores y 2.º orden) y **confianza (`pb1`)** como segunda. Afecto, depresión, ansiedad, `pa1` y `pa5` quedan como criterio externo de la validez |
+| Estimador | MLR para los 0-10 (11 categorías); WLSMV como sensibilidad |
+| Ponderador | Sin ponderador en los modelos (el cluster por UPM no cambia nada; los pesos solo mueven los errores estándar ×1.45); con ponderador, solo las medias poblacionales |
+| Grupo de la invarianza | `tloc` (4 tamaños de localidad) mientras no llegue la tabla sociodemográfica |
+| AFE y AFC en la misma muestra | Se usan las 31,166 personas y se agrega una validación cruzada (AFE en una mitad y AFC en la otra) en 02 |
+| FIML | **Omitido**: las escalas no tienen faltantes y no se simulan (como en Habilidades Políticas). Queda la prueba de `ph1_*`/`ph2_*` de la sección 5 como constancia |
 
 Salidas (en `output/`, que no se versiona): `efecto_diseno.csv`, `faltantes_por_variable.csv`,
 `bloques_candidatos.csv`, `afe_ajuste.csv`, `afe_cargas_*.csv`, `afc_ajuste.csv`, `afc_cargas.csv`,
